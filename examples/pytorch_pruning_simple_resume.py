@@ -122,5 +122,5 @@ if __name__ == '__main__':
     print('*** summary ***')
     print('pruning rate = (MACs of sparse processing)/(MACs of dense processing)')
     print('MACs = number of multiply-accumulate')
-    print('final pruning rate: {}, final accuracy: {:.4f}'.format(test_acc, 1-temp_rate))
+    print('final accuracy: {:.4f}, final pruning rate: {:.4f}'.format(test_acc, 1-temp_rate))
     print("*** model saved as pytorch_mnist_resume ***")
