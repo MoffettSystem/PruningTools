@@ -27,12 +27,14 @@ if __name__ == '__main__':
     os.environ['CUDA_VISIBLE_DEVICES'] = '0'
     os.environ['TF_CPP_MIN_LOG_LEVEL'] = '4'
     batch = 1000 
-    lr = 0.1 / 256 * batch
+    lr = 0.01 / 256 * batch
     total_epoch = 100
     out_dir = 'tensorflow_model/mnist'
+    print('*** setup ***')
+    print('*** initial learning rate: {}; total epoch: {}; output_dir: {} ***'.format(lr, total_epoch, out_dir))
 
     # setup pruning parameters
-    target_sparsity = 0.95 
+    target_sparsity = 0.95
     pretrain_epoch = 20
     pruning_epoch = 70
     assert pretrain_epoch + pruning_epoch <= total_epoch, 'reset pretrain_epoch, pruning_epoch and total_epoch'
@@ -122,7 +124,7 @@ if __name__ == '__main__':
         temp_rate = 1.0 - numpy.mean([v for k,v in Session.run(nnz_dict).items()])
         if temp_rate == 0.0 and test_acc > best_acc_dense:
             best_acc_dense = test_acc
-        print('epoch {}|accuracy: {:.3f}|pruning_rate={:.3f}'.format(i, test_acc, temp_rate))
+        print('epoch {}|accuracy: {:.4f}|pruning_rate={:.4f}'.format(i, test_acc, temp_rate))
 
     Saver.save(Session, out_dir, global_step=_global_step)
     

@@ -27,7 +27,7 @@ if __name__ == '__main__':
     os.environ['CUDA_VISIBLE_DEVICES'] = '0'
     os.environ['TF_CPP_MIN_LOG_LEVEL'] = '4'
     batch = 1000 
-    lr = 0.1 / 256 * batch
+    lr = 0.01 / 256 * batch
     total_epoch = 20
     pretrain_dir = 'tensorflow_model'
     out_dir = 'tensorflow_model_finetune/mnist'
