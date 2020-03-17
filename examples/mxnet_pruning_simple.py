@@ -124,7 +124,7 @@ if __name__ == '__main__':
         temp_rate = numpy.mean([one[1] for one in temp_dict.items()])
         if temp_rate == 1.0 and test_acc > best_acc_dense:
             best_acc_dense = test_acc
-        print('epoch {}|accuracy={:.4f}|pruning rate={:.4f}'.format(i, test_acc, 1.0-temp_rate))
+        print('epoch {}|accuracy={:.4f}|pruning_rate={:.4f}'.format(i, test_acc, 1.0-temp_rate))
     model.save_parameters('mxnet_mnist')
 
     print('*** summary ***')

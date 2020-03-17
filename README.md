@@ -5,15 +5,15 @@
 1. [x] 用户将已有训练代码中的优化器替换为Moffett AI剪枝优化器，从而直接剪枝模型，而几乎不需要修改其他代码。例如：
     ```key
     # 导入剪枝优化器
-    import optimizer.pytorch_pruning as pruning
+    from optimizers import tensorflow1_pruning as pruning
     ......
     # 调用剪枝优化器替换原来的优化器
-    # optimizer = torch.optim.SGD(...)
-    optimizer = pruning.SGDSparse(...)
+    # optimizer = tensorflow.compat.v1.train.MomentumOptimizer(...)
+    optimizer = pruning.MomentumOptimizerSparse(...)
     ......
     ```
 
-2. [ ] 用户可将模型替换成Moffett AI提供的稀疏化预训练模型，在保持稀疏率的前提下finetune在用户数据。
+2. [x] 用户可将模型替换成Moffett AI提供的稀疏化预训练模型，在保持稀疏率的前提下finetune在用户数据。
 ---
 
 **<font size='3'>本工程包含以下内容:</font>**
@@ -23,12 +23,15 @@
  * [x] mxnet_pruning.NadamSparse
  * [x] pytorch_pruning.SGDSparse
  * [x] pytorch_pruning.AdamSparse
- * [ ] tensorflow_pruning.MomentumOptimizerSparse
- * [ ] tensorflow_pruning.AdamOptimizerSparse
+ * [x] tensorflow1_pruning.MomentumOptimizerSparse (暂不支持多卡训练)
+ * [x] tensorflow1_pruning.AdamOptimizerSparse (暂不支持多卡训练)
 
  剪枝优化器的命名方式为原框架优化器的名字加上"Sparse"，所以"NAGSparse"是来源于原框架的"NAG"优化器。剪枝优化器是在原框架优化器的基础上加入稀疏化功能，如果使用剪枝优化器，但参数设置为不稀疏，那么优化器的行为将等价于原框架同名优化器的行为。
  
-剪枝优化器参数请查看[此文档](./parameters.md)
+剪枝优化器参数请查看:
+* `pytorch 优化器文档`[请点此查看](./docs/pytorch_parameters.md)
+* `mxnet 优化器文档`[请点此查看](./docs/mxnet_parameters.md)
+* `tensorflow v1 优化器文档`[请点此查看](./docs/tensorflow1_parameters.md)
 
 **<font size='3'>2. mnist数据集上剪枝简单CNN的使用范例:</font>**
 
@@ -42,7 +45,7 @@
  * [x] pytorch版本:
     `python3.7 examples/pytorch_pruning_simple.py`
 
-  * [ ] tensorflow版本:
+  * [x] tensorflow版本:
     `python3.7 examples/tensorflow_pruning_simple.py`
 
    <font size='3'>2.2. 从已经稀疏的模型继续训练：</font>
@@ -54,11 +57,13 @@
     `python3.7 examples/pytorch_pruning_simple_resume.py`
 
    * [ ] tensorflow版本:
-    `python3.7 examples/tensorflow_pruning_simple_resume.py`
+    `python3.7 examples/tensorflow1_pruning_simple_resume.py`
 
 *注意事项: 目前剪枝优化器只适用于python3.7版本，其他版本会陆续更新。[mxnet安装连接](https://mxnet.apache.org/get_started/?platform=macos&language=python&), [pytorch 安装连接](https://pytorch.org/)*
 
-**<font size='3'>3. resnet50在imagenet数据集剪枝后的模型在cifar数据上finetune (*to be add*)</font>**
+**<font size='3'>3. 压缩好的模型在保持稀疏率的前提下finetune范例:</font>**
+* [x] tensorflow 1.14 版本：
+`python3.7 examples/tensorflow1_pruning_simple_finetune.py`
 
 **<font size='3'>4. imagenet和coco数据集上剪枝resnet等模型的使用示例 (*to be add*)</font>**
 

@@ -116,7 +116,7 @@ if __name__ == '__main__':
             rate = numpy.flatnonzero(temp).size / temp.size
             temp_dict[n] = rate
         temp_rate = numpy.mean([one[1] for one in temp_dict.items()])
-        print('epoch {}|accuracy: {:.4f}|compression rate={:.4f}'.format(idx, test_acc, 1.0-temp_rate))
+        print('epoch {}|accuracy: {:.4f}|pruning_rate={:.4f}'.format(idx, test_acc, 1.0-temp_rate))
     torch.save(model.state_dict(), 'pytorch_mnist_resume')
 
     print('*** summary ***')

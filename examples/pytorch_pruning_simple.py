@@ -116,7 +116,7 @@ if __name__ == '__main__':
         temp_rate = numpy.mean([one[1] for one in temp_dict.items()])
         if temp_rate == 1.0 and test_acc > best_acc_dense:
             best_acc_dense = test_acc
-        print('epoch {}|accuracy: {:.4f}|compression rate={:.4f}'.format(idx, test_acc, 1.0-temp_rate))
+        print('epoch {}|accuracy: {:.4f}|pruning_rate={:.4f}'.format(idx, test_acc, 1.0-temp_rate))
     torch.save(model.state_dict(), 'pytorch_mnist')
 
     print('*** summary ***')
