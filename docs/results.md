@@ -36,6 +36,6 @@ dataset: A person-vehicle detection dataset derived from coco.
 |resnet50v1d + centernet|pytorch|person-vehicle detection|0|28.7%|
 |resnet50v1d + centernet|pytorch|person-vehicle detection|80%|30.4%|
 
-<img src="../examples/cocoSubset/inference_results/img1_sparse.jpg" width=250px alt="Markdown Monster icon" style="float: left; margin-right: 10px;" />
-<img src="../examples/cocoSubset/inference_results/img2_sparse.jpg" width=250px alt="Markdown Monster icon" style="float: left; margin-right: 10px;" />
-<img src="../examples/cocoSubset/inference_results/img3_sparse.jpg" width=250px alt="Markdown Monster icon" style="float: left; margin-right: 10px;" />
+<img src="../examples/cocoSubset/inference_results/img1_sparse.jpg" width=200px alt="Markdown Monster icon" style="float: left; margin-right: 10px;" />
+<img src="../examples/cocoSubset/inference_results/img2_sparse.jpg" width=200px alt="Markdown Monster icon" style="float: left; margin-right: 10px;" />
+<img src="../examples/cocoSubset/inference_results/img3_sparse.jpg" width=200px alt="Markdown Monster icon" style="float: left; margin-right: 10px;" />
