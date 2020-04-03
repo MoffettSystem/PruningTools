@@ -3,7 +3,7 @@ import sys
 import numpy
 import tensorflow
 import tensorflow_datasets
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 from optimizers import tensorflow1_pruning as pruning
 
 def network(x, training):
@@ -28,7 +28,7 @@ if __name__ == '__main__':
     os.environ['TF_CPP_MIN_LOG_LEVEL'] = '4'
     batch = 1000 
     lr = 0.01 / 256 * batch
-    total_epoch = 20
+    total_epoch = 50
     pretrain_dir = 'tensorflow_model'
     out_dir = 'tensorflow_model_finetune/mnist'
 

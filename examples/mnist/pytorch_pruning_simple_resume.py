@@ -3,7 +3,7 @@ import sys
 import numpy
 import torch
 import torchvision
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 from optimizers import pytorch_pruning as pruning
 
 class Net(torch.nn.Module):
@@ -34,7 +34,7 @@ class Net(torch.nn.Module):
 
 if __name__ == '__main__':
     # setup gpu device(s) 
-    os.environ['CUDA_VISIBLE_DEVICES'] = '3'
+    os.environ['CUDA_VISIBLE_DEVICES'] = '0'
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
     #setup training parameters
@@ -57,7 +57,7 @@ if __name__ == '__main__':
 
     # define network 
     model = Net().to(device)
-    model.load_state_dict(torch.load('pytorch_mnist'))
+    model.load_state_dict(torch.load('pytorch_mnist.pth'))
 
     # pruning setup 
     target_sparsity = 0.95
@@ -66,8 +66,8 @@ if __name__ == '__main__':
     frequency = step / 5
     keywords_no_sparse = ['bias', 'bn', 'conv1.weight'] 
     special_sparsity_dict = {'conv1_weight': 0.7}
-    resume = True
-    optimizer = pruning.SGDSparse(model.parameters(), lr, weight_decay=1e-5, target_sparsity=target_sparsity, pretrain_step=pretrain_step, sparse_step=sparse_step, frequency=frequency, keywords_no_sparse=keywords_no_sparse, special_sparsity_dict=special_sparsity_dict, param_name=model.named_parameters(), resume=resume)
+    #optimizer = pruning.SGDSparse(model.parameters(), lr, weight_decay=1e-5, restore_sparsity=True, fix_sparsity=True, param_name=model.named_parameters())
+    optimizer = pruning.SGDSparse(model.parameters(), lr, weight_decay=1e-5, target_sparsity=target_sparsity, pretrain_step=pretrain_step, sparse_step=sparse_step, frequency=frequency, keywords_no_sparse=keywords_no_sparse, special_sparsity_dict=special_sparsity_dict, param_name=model.named_parameters(), restore_sparsity=True)
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, step * epoch)
     print('*** pruning setup ***')
     print('pruning optimizer is based on {};\ntarget pruning rate: {};\npruning_epoch: {};\npruning frequency: {};\nops without pruning: {};'.format(
@@ -117,10 +117,10 @@ if __name__ == '__main__':
             temp_dict[n] = rate
         temp_rate = numpy.mean([one[1] for one in temp_dict.items()])
         print('epoch {}|accuracy: {:.4f}|pruning_rate={:.4f}'.format(idx, test_acc, 1.0-temp_rate))
-    torch.save(model.state_dict(), 'pytorch_mnist_resume')
+    torch.save(model.state_dict(), 'pytorch_mnist_resume.pth')
 
     print('*** summary ***')
     print('pruning rate = (MACs of sparse processing)/(MACs of dense processing)')
     print('MACs = number of multiply-accumulate')
     print('final accuracy: {:.4f}, final pruning rate: {:.4f}'.format(test_acc, 1-temp_rate))
-    print("*** model saved as pytorch_mnist_resume ***")
+    print("*** model saved as pytorch_mnist_resume.pth ***")

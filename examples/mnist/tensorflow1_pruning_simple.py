@@ -3,7 +3,7 @@ import sys
 import numpy
 import tensorflow
 import tensorflow_datasets
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 from optimizers import tensorflow1_pruning as pruning
 
 def network(x, training):
@@ -24,19 +24,19 @@ def network(x, training):
 
 if __name__ == '__main__':
     # setup training parameters
-    os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+    os.environ['CUDA_VISIBLE_DEVICES'] = '2'
     os.environ['TF_CPP_MIN_LOG_LEVEL'] = '4'
     batch = 1000 
     lr = 0.01 / 256 * batch
-    total_epoch = 100
+    total_epoch = 200
     out_dir = 'tensorflow_model/mnist'
     print('*** setup ***')
     print('*** initial learning rate: {}; total epoch: {}; output_dir: {} ***'.format(lr, total_epoch, out_dir))
 
     # setup pruning parameters
     target_sparsity = 0.95
-    pretrain_epoch = 20
-    pruning_epoch = 70
+    pretrain_epoch = 40
+    pruning_epoch = 140
     assert pretrain_epoch + pruning_epoch <= total_epoch, 'reset pretrain_epoch, pruning_epoch and total_epoch'
     keywords_no_sparse = ['bias', 'beta', 'gamma', 'conv2d/kernel:0']
 

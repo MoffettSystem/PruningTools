@@ -39,9 +39,13 @@
 
         设置分组压缩的分组策略，该选项与硬件相关，目前仅支持默认参数。另外由于硬件限制，目前要求卷积层的输入和输出通道都必须可被4整除，否则该层不支持被压缩。
 
-* resume (bool, default=False):
+* restore_sparsity (bool, default=False):
 
-        设置是否从已经稀疏化的模型继续训练。在训练中断恢复或finetune时使用。
+        如果设置为True，则设置初始稀疏率为模型当前的稀疏率，一般用于训练中断恢复训练或finetune时使用。
+
+* fix_sparsity (bool, default=False):
+
+        如果设置为True，则会固定当前模型的稀疏率不再变化，一般用于载入已经稀疏化的模型并finetune时使用。
 
 * L1_regularization (bool, default=False):
 

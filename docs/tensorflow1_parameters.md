@@ -22,30 +22,6 @@
 
             是否使用变量锁。
 
-* AdamOptimizerSparse
-
-    该优化器有以下特有参数：
-
-    * learning_rate:
-
-            设置学习率。
-
-    * beta1 (default=0.9):
-
-            设置beta1。
-
-    * beta2 (default=0.999):
-
-            设置beta2。
-
-    * epsilon (default=1e-8):
-
-            设置epsilon。
-
-    * use_locking (default=False):
-
-            是否使用变量锁。
-
 ## 稀疏优化器的参数：
 * init_sparsity=0 (float, default=0):
 

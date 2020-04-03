@@ -1,0 +1,3564 @@
+[
+  {
+    "node_id": 0,
+    "node_type": "Var",
+    "node_name": "data",
+    "op_type": "Const",
+    "shape": [
+      1,
+      3,
+      224,
+      224
+    ]
+  },
+  {
+    "node_id": 287,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      0,
+      "resnetv1d_conv0_weight"
+    ],
+    "attrs": {
+      "strides": [
+        2,
+        2
+      ],
+      "padding": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "kernel_size": [
+        3,
+        3
+      ],
+      "W_shape": [
+        32,
+        3,
+        3,
+        3
+      ]
+    }
+  },
+  {
+    "node_id": 288,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      287,
+      "resnetv1d_batchnorm0_gamma",
+      "resnetv1d_batchnorm0_beta",
+      "resnetv1d_batchnorm0_running_mean",
+      "resnetv1d_batchnorm0_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        32
+      ]
+    }
+  },
+  {
+    "node_id": 290,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      288
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 291,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      290,
+      "resnetv1d_conv1_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "kernel_size": [
+        3,
+        3
+      ],
+      "W_shape": [
+        32,
+        32,
+        3,
+        3
+      ]
+    }
+  },
+  {
+    "node_id": 292,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      291,
+      "resnetv1d_batchnorm1_gamma",
+      "resnetv1d_batchnorm1_beta",
+      "resnetv1d_batchnorm1_running_mean",
+      "resnetv1d_batchnorm1_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        32
+      ]
+    }
+  },
+  {
+    "node_id": 294,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      292
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 295,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      294,
+      "resnetv1d_conv2_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "kernel_size": [
+        3,
+        3
+      ],
+      "W_shape": [
+        64,
+        32,
+        3,
+        3
+      ]
+    }
+  },
+  {
+    "node_id": 296,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      295,
+      "resnetv1d_batchnorm2_gamma",
+      "resnetv1d_batchnorm2_beta",
+      "resnetv1d_batchnorm2_running_mean",
+      "resnetv1d_batchnorm2_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        64
+      ]
+    }
+  },
+  {
+    "node_id": 298,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      296
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 299,
+    "node_type": "Call",
+    "op_type": "nn.max_pool2d",
+    "inputs": [
+      298
+    ],
+    "attrs": {
+      "pool_size": [
+        3,
+        3
+      ],
+      "strides": [
+        2,
+        2
+      ],
+      "padding": [
+        1,
+        1
+      ],
+      "layout": "NCHW",
+      "ceil_mode": 0
+    }
+  },
+  {
+    "node_id": 300,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      299,
+      "resnetv1d_layers1_conv0_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        64,
+        64,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 301,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      300,
+      "resnetv1d_layers1_batchnorm0_gamma",
+      "resnetv1d_layers1_batchnorm0_beta",
+      "resnetv1d_layers1_batchnorm0_running_mean",
+      "resnetv1d_layers1_batchnorm0_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        64
+      ]
+    }
+  },
+  {
+    "node_id": 303,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      301
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 304,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      303,
+      "resnetv1d_layers1_conv1_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "kernel_size": [
+        3,
+        3
+      ],
+      "W_shape": [
+        64,
+        64,
+        3,
+        3
+      ]
+    }
+  },
+  {
+    "node_id": 305,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      304,
+      "resnetv1d_layers1_batchnorm1_gamma",
+      "resnetv1d_layers1_batchnorm1_beta",
+      "resnetv1d_layers1_batchnorm1_running_mean",
+      "resnetv1d_layers1_batchnorm1_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        64
+      ]
+    }
+  },
+  {
+    "node_id": 307,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      305
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 308,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      307,
+      "resnetv1d_layers1_conv2_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        256,
+        64,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 309,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      308,
+      "resnetv1d_layers1_batchnorm2_gamma",
+      "resnetv1d_layers1_batchnorm2_beta",
+      "resnetv1d_layers1_batchnorm2_running_mean",
+      "resnetv1d_layers1_batchnorm2_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        256
+      ]
+    }
+  },
+  {
+    "node_id": 312,
+    "node_type": "Call",
+    "op_type": "nn.avg_pool2d",
+    "inputs": [
+      299
+    ],
+    "attrs": {
+      "pool_size": [
+        1,
+        1
+      ],
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "layout": "NCHW",
+      "ceil_mode": 1,
+      "count_include_pad": 0
+    }
+  },
+  {
+    "node_id": 313,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      312,
+      "resnetv1d_down1_conv0_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        256,
+        64,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 314,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      313,
+      "resnetv1d_down1_batchnorm0_gamma",
+      "resnetv1d_down1_batchnorm0_beta",
+      "resnetv1d_down1_batchnorm0_running_mean",
+      "resnetv1d_down1_batchnorm0_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        256
+      ]
+    }
+  },
+  {
+    "node_id": 316,
+    "node_type": "Call",
+    "op_type": "add",
+    "inputs": [
+      309,
+      314
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 317,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      316
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 318,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      317,
+      "resnetv1d_layers1_conv3_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        64,
+        256,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 319,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      318,
+      "resnetv1d_layers1_batchnorm3_gamma",
+      "resnetv1d_layers1_batchnorm3_beta",
+      "resnetv1d_layers1_batchnorm3_running_mean",
+      "resnetv1d_layers1_batchnorm3_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        64
+      ]
+    }
+  },
+  {
+    "node_id": 321,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      319
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 322,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      321,
+      "resnetv1d_layers1_conv4_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "kernel_size": [
+        3,
+        3
+      ],
+      "W_shape": [
+        64,
+        64,
+        3,
+        3
+      ]
+    }
+  },
+  {
+    "node_id": 323,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      322,
+      "resnetv1d_layers1_batchnorm4_gamma",
+      "resnetv1d_layers1_batchnorm4_beta",
+      "resnetv1d_layers1_batchnorm4_running_mean",
+      "resnetv1d_layers1_batchnorm4_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        64
+      ]
+    }
+  },
+  {
+    "node_id": 325,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      323
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 326,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      325,
+      "resnetv1d_layers1_conv5_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        256,
+        64,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 327,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      326,
+      "resnetv1d_layers1_batchnorm5_gamma",
+      "resnetv1d_layers1_batchnorm5_beta",
+      "resnetv1d_layers1_batchnorm5_running_mean",
+      "resnetv1d_layers1_batchnorm5_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        256
+      ]
+    }
+  },
+  {
+    "node_id": 329,
+    "node_type": "Call",
+    "op_type": "add",
+    "inputs": [
+      327,
+      317
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 330,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      329
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 331,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      330,
+      "resnetv1d_layers1_conv6_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        64,
+        256,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 332,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      331,
+      "resnetv1d_layers1_batchnorm6_gamma",
+      "resnetv1d_layers1_batchnorm6_beta",
+      "resnetv1d_layers1_batchnorm6_running_mean",
+      "resnetv1d_layers1_batchnorm6_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        64
+      ]
+    }
+  },
+  {
+    "node_id": 334,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      332
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 335,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      334,
+      "resnetv1d_layers1_conv7_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "kernel_size": [
+        3,
+        3
+      ],
+      "W_shape": [
+        64,
+        64,
+        3,
+        3
+      ]
+    }
+  },
+  {
+    "node_id": 336,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      335,
+      "resnetv1d_layers1_batchnorm7_gamma",
+      "resnetv1d_layers1_batchnorm7_beta",
+      "resnetv1d_layers1_batchnorm7_running_mean",
+      "resnetv1d_layers1_batchnorm7_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        64
+      ]
+    }
+  },
+  {
+    "node_id": 338,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      336
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 339,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      338,
+      "resnetv1d_layers1_conv8_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        256,
+        64,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 340,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      339,
+      "resnetv1d_layers1_batchnorm8_gamma",
+      "resnetv1d_layers1_batchnorm8_beta",
+      "resnetv1d_layers1_batchnorm8_running_mean",
+      "resnetv1d_layers1_batchnorm8_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        256
+      ]
+    }
+  },
+  {
+    "node_id": 342,
+    "node_type": "Call",
+    "op_type": "add",
+    "inputs": [
+      340,
+      330
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 343,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      342
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 344,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      343,
+      "resnetv1d_layers2_conv0_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        128,
+        256,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 345,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      344,
+      "resnetv1d_layers2_batchnorm0_gamma",
+      "resnetv1d_layers2_batchnorm0_beta",
+      "resnetv1d_layers2_batchnorm0_running_mean",
+      "resnetv1d_layers2_batchnorm0_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        128
+      ]
+    }
+  },
+  {
+    "node_id": 347,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      345
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 348,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      347,
+      "resnetv1d_layers2_conv1_weight"
+    ],
+    "attrs": {
+      "strides": [
+        2,
+        2
+      ],
+      "padding": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "kernel_size": [
+        3,
+        3
+      ],
+      "W_shape": [
+        128,
+        128,
+        3,
+        3
+      ]
+    }
+  },
+  {
+    "node_id": 349,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      348,
+      "resnetv1d_layers2_batchnorm1_gamma",
+      "resnetv1d_layers2_batchnorm1_beta",
+      "resnetv1d_layers2_batchnorm1_running_mean",
+      "resnetv1d_layers2_batchnorm1_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        128
+      ]
+    }
+  },
+  {
+    "node_id": 351,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      349
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 352,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      351,
+      "resnetv1d_layers2_conv2_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        512,
+        128,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 353,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      352,
+      "resnetv1d_layers2_batchnorm2_gamma",
+      "resnetv1d_layers2_batchnorm2_beta",
+      "resnetv1d_layers2_batchnorm2_running_mean",
+      "resnetv1d_layers2_batchnorm2_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        512
+      ]
+    }
+  },
+  {
+    "node_id": 355,
+    "node_type": "Call",
+    "op_type": "nn.avg_pool2d",
+    "inputs": [
+      343
+    ],
+    "attrs": {
+      "pool_size": [
+        2,
+        2
+      ],
+      "strides": [
+        2,
+        2
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "layout": "NCHW",
+      "ceil_mode": 1,
+      "count_include_pad": 0
+    }
+  },
+  {
+    "node_id": 356,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      355,
+      "resnetv1d_down2_conv0_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        512,
+        256,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 357,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      356,
+      "resnetv1d_down2_batchnorm0_gamma",
+      "resnetv1d_down2_batchnorm0_beta",
+      "resnetv1d_down2_batchnorm0_running_mean",
+      "resnetv1d_down2_batchnorm0_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        512
+      ]
+    }
+  },
+  {
+    "node_id": 359,
+    "node_type": "Call",
+    "op_type": "add",
+    "inputs": [
+      353,
+      357
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 360,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      359
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 361,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      360,
+      "resnetv1d_layers2_conv3_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        128,
+        512,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 362,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      361,
+      "resnetv1d_layers2_batchnorm3_gamma",
+      "resnetv1d_layers2_batchnorm3_beta",
+      "resnetv1d_layers2_batchnorm3_running_mean",
+      "resnetv1d_layers2_batchnorm3_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        128
+      ]
+    }
+  },
+  {
+    "node_id": 364,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      362
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 365,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      364,
+      "resnetv1d_layers2_conv4_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "kernel_size": [
+        3,
+        3
+      ],
+      "W_shape": [
+        128,
+        128,
+        3,
+        3
+      ]
+    }
+  },
+  {
+    "node_id": 366,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      365,
+      "resnetv1d_layers2_batchnorm4_gamma",
+      "resnetv1d_layers2_batchnorm4_beta",
+      "resnetv1d_layers2_batchnorm4_running_mean",
+      "resnetv1d_layers2_batchnorm4_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        128
+      ]
+    }
+  },
+  {
+    "node_id": 368,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      366
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 369,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      368,
+      "resnetv1d_layers2_conv5_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        512,
+        128,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 370,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      369,
+      "resnetv1d_layers2_batchnorm5_gamma",
+      "resnetv1d_layers2_batchnorm5_beta",
+      "resnetv1d_layers2_batchnorm5_running_mean",
+      "resnetv1d_layers2_batchnorm5_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        512
+      ]
+    }
+  },
+  {
+    "node_id": 372,
+    "node_type": "Call",
+    "op_type": "add",
+    "inputs": [
+      370,
+      360
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 373,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      372
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 374,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      373,
+      "resnetv1d_layers2_conv6_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        128,
+        512,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 375,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      374,
+      "resnetv1d_layers2_batchnorm6_gamma",
+      "resnetv1d_layers2_batchnorm6_beta",
+      "resnetv1d_layers2_batchnorm6_running_mean",
+      "resnetv1d_layers2_batchnorm6_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        128
+      ]
+    }
+  },
+  {
+    "node_id": 377,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      375
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 378,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      377,
+      "resnetv1d_layers2_conv7_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "kernel_size": [
+        3,
+        3
+      ],
+      "W_shape": [
+        128,
+        128,
+        3,
+        3
+      ]
+    }
+  },
+  {
+    "node_id": 379,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      378,
+      "resnetv1d_layers2_batchnorm7_gamma",
+      "resnetv1d_layers2_batchnorm7_beta",
+      "resnetv1d_layers2_batchnorm7_running_mean",
+      "resnetv1d_layers2_batchnorm7_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        128
+      ]
+    }
+  },
+  {
+    "node_id": 381,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      379
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 382,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      381,
+      "resnetv1d_layers2_conv8_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        512,
+        128,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 383,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      382,
+      "resnetv1d_layers2_batchnorm8_gamma",
+      "resnetv1d_layers2_batchnorm8_beta",
+      "resnetv1d_layers2_batchnorm8_running_mean",
+      "resnetv1d_layers2_batchnorm8_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        512
+      ]
+    }
+  },
+  {
+    "node_id": 385,
+    "node_type": "Call",
+    "op_type": "add",
+    "inputs": [
+      383,
+      373
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 386,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      385
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 387,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      386,
+      "resnetv1d_layers2_conv9_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        128,
+        512,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 388,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      387,
+      "resnetv1d_layers2_batchnorm9_gamma",
+      "resnetv1d_layers2_batchnorm9_beta",
+      "resnetv1d_layers2_batchnorm9_running_mean",
+      "resnetv1d_layers2_batchnorm9_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        128
+      ]
+    }
+  },
+  {
+    "node_id": 390,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      388
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 391,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      390,
+      "resnetv1d_layers2_conv10_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "kernel_size": [
+        3,
+        3
+      ],
+      "W_shape": [
+        128,
+        128,
+        3,
+        3
+      ]
+    }
+  },
+  {
+    "node_id": 392,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      391,
+      "resnetv1d_layers2_batchnorm10_gamma",
+      "resnetv1d_layers2_batchnorm10_beta",
+      "resnetv1d_layers2_batchnorm10_running_mean",
+      "resnetv1d_layers2_batchnorm10_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        128
+      ]
+    }
+  },
+  {
+    "node_id": 394,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      392
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 395,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      394,
+      "resnetv1d_layers2_conv11_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        512,
+        128,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 396,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      395,
+      "resnetv1d_layers2_batchnorm11_gamma",
+      "resnetv1d_layers2_batchnorm11_beta",
+      "resnetv1d_layers2_batchnorm11_running_mean",
+      "resnetv1d_layers2_batchnorm11_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        512
+      ]
+    }
+  },
+  {
+    "node_id": 398,
+    "node_type": "Call",
+    "op_type": "add",
+    "inputs": [
+      396,
+      386
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 399,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      398
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 400,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      399,
+      "resnetv1d_layers3_conv0_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        256,
+        512,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 401,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      400,
+      "resnetv1d_layers3_batchnorm0_gamma",
+      "resnetv1d_layers3_batchnorm0_beta",
+      "resnetv1d_layers3_batchnorm0_running_mean",
+      "resnetv1d_layers3_batchnorm0_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        256
+      ]
+    }
+  },
+  {
+    "node_id": 403,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      401
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 404,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      403,
+      "resnetv1d_layers3_conv1_weight"
+    ],
+    "attrs": {
+      "strides": [
+        2,
+        2
+      ],
+      "padding": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "kernel_size": [
+        3,
+        3
+      ],
+      "W_shape": [
+        256,
+        256,
+        3,
+        3
+      ]
+    }
+  },
+  {
+    "node_id": 405,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      404,
+      "resnetv1d_layers3_batchnorm1_gamma",
+      "resnetv1d_layers3_batchnorm1_beta",
+      "resnetv1d_layers3_batchnorm1_running_mean",
+      "resnetv1d_layers3_batchnorm1_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        256
+      ]
+    }
+  },
+  {
+    "node_id": 407,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      405
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 408,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      407,
+      "resnetv1d_layers3_conv2_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        1024,
+        256,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 409,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      408,
+      "resnetv1d_layers3_batchnorm2_gamma",
+      "resnetv1d_layers3_batchnorm2_beta",
+      "resnetv1d_layers3_batchnorm2_running_mean",
+      "resnetv1d_layers3_batchnorm2_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        1024
+      ]
+    }
+  },
+  {
+    "node_id": 411,
+    "node_type": "Call",
+    "op_type": "nn.avg_pool2d",
+    "inputs": [
+      399
+    ],
+    "attrs": {
+      "pool_size": [
+        2,
+        2
+      ],
+      "strides": [
+        2,
+        2
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "layout": "NCHW",
+      "ceil_mode": 1,
+      "count_include_pad": 0
+    }
+  },
+  {
+    "node_id": 412,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      411,
+      "resnetv1d_down3_conv0_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        1024,
+        512,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 413,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      412,
+      "resnetv1d_down3_batchnorm0_gamma",
+      "resnetv1d_down3_batchnorm0_beta",
+      "resnetv1d_down3_batchnorm0_running_mean",
+      "resnetv1d_down3_batchnorm0_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        1024
+      ]
+    }
+  },
+  {
+    "node_id": 415,
+    "node_type": "Call",
+    "op_type": "add",
+    "inputs": [
+      409,
+      413
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 416,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      415
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 417,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      416,
+      "resnetv1d_layers3_conv3_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        256,
+        1024,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 418,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      417,
+      "resnetv1d_layers3_batchnorm3_gamma",
+      "resnetv1d_layers3_batchnorm3_beta",
+      "resnetv1d_layers3_batchnorm3_running_mean",
+      "resnetv1d_layers3_batchnorm3_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        256
+      ]
+    }
+  },
+  {
+    "node_id": 420,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      418
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 421,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      420,
+      "resnetv1d_layers3_conv4_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "kernel_size": [
+        3,
+        3
+      ],
+      "W_shape": [
+        256,
+        256,
+        3,
+        3
+      ]
+    }
+  },
+  {
+    "node_id": 422,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      421,
+      "resnetv1d_layers3_batchnorm4_gamma",
+      "resnetv1d_layers3_batchnorm4_beta",
+      "resnetv1d_layers3_batchnorm4_running_mean",
+      "resnetv1d_layers3_batchnorm4_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        256
+      ]
+    }
+  },
+  {
+    "node_id": 424,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      422
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 425,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      424,
+      "resnetv1d_layers3_conv5_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        1024,
+        256,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 426,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      425,
+      "resnetv1d_layers3_batchnorm5_gamma",
+      "resnetv1d_layers3_batchnorm5_beta",
+      "resnetv1d_layers3_batchnorm5_running_mean",
+      "resnetv1d_layers3_batchnorm5_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        1024
+      ]
+    }
+  },
+  {
+    "node_id": 428,
+    "node_type": "Call",
+    "op_type": "add",
+    "inputs": [
+      426,
+      416
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 429,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      428
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 430,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      429,
+      "resnetv1d_layers3_conv6_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        256,
+        1024,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 431,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      430,
+      "resnetv1d_layers3_batchnorm6_gamma",
+      "resnetv1d_layers3_batchnorm6_beta",
+      "resnetv1d_layers3_batchnorm6_running_mean",
+      "resnetv1d_layers3_batchnorm6_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        256
+      ]
+    }
+  },
+  {
+    "node_id": 433,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      431
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 434,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      433,
+      "resnetv1d_layers3_conv7_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "kernel_size": [
+        3,
+        3
+      ],
+      "W_shape": [
+        256,
+        256,
+        3,
+        3
+      ]
+    }
+  },
+  {
+    "node_id": 435,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      434,
+      "resnetv1d_layers3_batchnorm7_gamma",
+      "resnetv1d_layers3_batchnorm7_beta",
+      "resnetv1d_layers3_batchnorm7_running_mean",
+      "resnetv1d_layers3_batchnorm7_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        256
+      ]
+    }
+  },
+  {
+    "node_id": 437,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      435
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 438,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      437,
+      "resnetv1d_layers3_conv8_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        1024,
+        256,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 439,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      438,
+      "resnetv1d_layers3_batchnorm8_gamma",
+      "resnetv1d_layers3_batchnorm8_beta",
+      "resnetv1d_layers3_batchnorm8_running_mean",
+      "resnetv1d_layers3_batchnorm8_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        1024
+      ]
+    }
+  },
+  {
+    "node_id": 441,
+    "node_type": "Call",
+    "op_type": "add",
+    "inputs": [
+      439,
+      429
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 442,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      441
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 443,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      442,
+      "resnetv1d_layers3_conv9_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        256,
+        1024,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 444,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      443,
+      "resnetv1d_layers3_batchnorm9_gamma",
+      "resnetv1d_layers3_batchnorm9_beta",
+      "resnetv1d_layers3_batchnorm9_running_mean",
+      "resnetv1d_layers3_batchnorm9_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        256
+      ]
+    }
+  },
+  {
+    "node_id": 446,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      444
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 447,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      446,
+      "resnetv1d_layers3_conv10_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "kernel_size": [
+        3,
+        3
+      ],
+      "W_shape": [
+        256,
+        256,
+        3,
+        3
+      ]
+    }
+  },
+  {
+    "node_id": 448,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      447,
+      "resnetv1d_layers3_batchnorm10_gamma",
+      "resnetv1d_layers3_batchnorm10_beta",
+      "resnetv1d_layers3_batchnorm10_running_mean",
+      "resnetv1d_layers3_batchnorm10_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        256
+      ]
+    }
+  },
+  {
+    "node_id": 450,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      448
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 451,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      450,
+      "resnetv1d_layers3_conv11_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        1024,
+        256,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 452,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      451,
+      "resnetv1d_layers3_batchnorm11_gamma",
+      "resnetv1d_layers3_batchnorm11_beta",
+      "resnetv1d_layers3_batchnorm11_running_mean",
+      "resnetv1d_layers3_batchnorm11_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        1024
+      ]
+    }
+  },
+  {
+    "node_id": 454,
+    "node_type": "Call",
+    "op_type": "add",
+    "inputs": [
+      452,
+      442
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 455,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      454
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 456,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      455,
+      "resnetv1d_layers3_conv12_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        256,
+        1024,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 457,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      456,
+      "resnetv1d_layers3_batchnorm12_gamma",
+      "resnetv1d_layers3_batchnorm12_beta",
+      "resnetv1d_layers3_batchnorm12_running_mean",
+      "resnetv1d_layers3_batchnorm12_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        256
+      ]
+    }
+  },
+  {
+    "node_id": 459,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      457
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 460,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      459,
+      "resnetv1d_layers3_conv13_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "kernel_size": [
+        3,
+        3
+      ],
+      "W_shape": [
+        256,
+        256,
+        3,
+        3
+      ]
+    }
+  },
+  {
+    "node_id": 461,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      460,
+      "resnetv1d_layers3_batchnorm13_gamma",
+      "resnetv1d_layers3_batchnorm13_beta",
+      "resnetv1d_layers3_batchnorm13_running_mean",
+      "resnetv1d_layers3_batchnorm13_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        256
+      ]
+    }
+  },
+  {
+    "node_id": 463,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      461
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 464,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      463,
+      "resnetv1d_layers3_conv14_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        1024,
+        256,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 465,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      464,
+      "resnetv1d_layers3_batchnorm14_gamma",
+      "resnetv1d_layers3_batchnorm14_beta",
+      "resnetv1d_layers3_batchnorm14_running_mean",
+      "resnetv1d_layers3_batchnorm14_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        1024
+      ]
+    }
+  },
+  {
+    "node_id": 467,
+    "node_type": "Call",
+    "op_type": "add",
+    "inputs": [
+      465,
+      455
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 468,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      467
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 469,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      468,
+      "resnetv1d_layers3_conv15_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        256,
+        1024,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 470,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      469,
+      "resnetv1d_layers3_batchnorm15_gamma",
+      "resnetv1d_layers3_batchnorm15_beta",
+      "resnetv1d_layers3_batchnorm15_running_mean",
+      "resnetv1d_layers3_batchnorm15_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        256
+      ]
+    }
+  },
+  {
+    "node_id": 472,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      470
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 473,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      472,
+      "resnetv1d_layers3_conv16_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "kernel_size": [
+        3,
+        3
+      ],
+      "W_shape": [
+        256,
+        256,
+        3,
+        3
+      ]
+    }
+  },
+  {
+    "node_id": 474,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      473,
+      "resnetv1d_layers3_batchnorm16_gamma",
+      "resnetv1d_layers3_batchnorm16_beta",
+      "resnetv1d_layers3_batchnorm16_running_mean",
+      "resnetv1d_layers3_batchnorm16_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        256
+      ]
+    }
+  },
+  {
+    "node_id": 476,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      474
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 477,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      476,
+      "resnetv1d_layers3_conv17_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        1024,
+        256,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 478,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      477,
+      "resnetv1d_layers3_batchnorm17_gamma",
+      "resnetv1d_layers3_batchnorm17_beta",
+      "resnetv1d_layers3_batchnorm17_running_mean",
+      "resnetv1d_layers3_batchnorm17_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        1024
+      ]
+    }
+  },
+  {
+    "node_id": 480,
+    "node_type": "Call",
+    "op_type": "add",
+    "inputs": [
+      478,
+      468
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 481,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      480
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 482,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      481,
+      "resnetv1d_layers4_conv0_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        512,
+        1024,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 483,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      482,
+      "resnetv1d_layers4_batchnorm0_gamma",
+      "resnetv1d_layers4_batchnorm0_beta",
+      "resnetv1d_layers4_batchnorm0_running_mean",
+      "resnetv1d_layers4_batchnorm0_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        512
+      ]
+    }
+  },
+  {
+    "node_id": 485,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      483
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 486,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      485,
+      "resnetv1d_layers4_conv1_weight"
+    ],
+    "attrs": {
+      "strides": [
+        2,
+        2
+      ],
+      "padding": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "kernel_size": [
+        3,
+        3
+      ],
+      "W_shape": [
+        512,
+        512,
+        3,
+        3
+      ]
+    }
+  },
+  {
+    "node_id": 487,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      486,
+      "resnetv1d_layers4_batchnorm1_gamma",
+      "resnetv1d_layers4_batchnorm1_beta",
+      "resnetv1d_layers4_batchnorm1_running_mean",
+      "resnetv1d_layers4_batchnorm1_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        512
+      ]
+    }
+  },
+  {
+    "node_id": 489,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      487
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 490,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      489,
+      "resnetv1d_layers4_conv2_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        2048,
+        512,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 491,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      490,
+      "resnetv1d_layers4_batchnorm2_gamma",
+      "resnetv1d_layers4_batchnorm2_beta",
+      "resnetv1d_layers4_batchnorm2_running_mean",
+      "resnetv1d_layers4_batchnorm2_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        2048
+      ]
+    }
+  },
+  {
+    "node_id": 493,
+    "node_type": "Call",
+    "op_type": "nn.avg_pool2d",
+    "inputs": [
+      481
+    ],
+    "attrs": {
+      "pool_size": [
+        2,
+        2
+      ],
+      "strides": [
+        2,
+        2
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "layout": "NCHW",
+      "ceil_mode": 1,
+      "count_include_pad": 0
+    }
+  },
+  {
+    "node_id": 494,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      493,
+      "resnetv1d_down4_conv0_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        2048,
+        1024,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 495,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      494,
+      "resnetv1d_down4_batchnorm0_gamma",
+      "resnetv1d_down4_batchnorm0_beta",
+      "resnetv1d_down4_batchnorm0_running_mean",
+      "resnetv1d_down4_batchnorm0_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        2048
+      ]
+    }
+  },
+  {
+    "node_id": 497,
+    "node_type": "Call",
+    "op_type": "add",
+    "inputs": [
+      491,
+      495
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 498,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      497
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 499,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      498,
+      "resnetv1d_layers4_conv3_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        512,
+        2048,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 500,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      499,
+      "resnetv1d_layers4_batchnorm3_gamma",
+      "resnetv1d_layers4_batchnorm3_beta",
+      "resnetv1d_layers4_batchnorm3_running_mean",
+      "resnetv1d_layers4_batchnorm3_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        512
+      ]
+    }
+  },
+  {
+    "node_id": 502,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      500
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 503,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      502,
+      "resnetv1d_layers4_conv4_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "kernel_size": [
+        3,
+        3
+      ],
+      "W_shape": [
+        512,
+        512,
+        3,
+        3
+      ]
+    }
+  },
+  {
+    "node_id": 504,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      503,
+      "resnetv1d_layers4_batchnorm4_gamma",
+      "resnetv1d_layers4_batchnorm4_beta",
+      "resnetv1d_layers4_batchnorm4_running_mean",
+      "resnetv1d_layers4_batchnorm4_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        512
+      ]
+    }
+  },
+  {
+    "node_id": 506,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      504
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 507,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      506,
+      "resnetv1d_layers4_conv5_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        2048,
+        512,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 508,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      507,
+      "resnetv1d_layers4_batchnorm5_gamma",
+      "resnetv1d_layers4_batchnorm5_beta",
+      "resnetv1d_layers4_batchnorm5_running_mean",
+      "resnetv1d_layers4_batchnorm5_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        2048
+      ]
+    }
+  },
+  {
+    "node_id": 510,
+    "node_type": "Call",
+    "op_type": "add",
+    "inputs": [
+      508,
+      498
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 511,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      510
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 512,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      511,
+      "resnetv1d_layers4_conv6_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        512,
+        2048,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 513,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      512,
+      "resnetv1d_layers4_batchnorm6_gamma",
+      "resnetv1d_layers4_batchnorm6_beta",
+      "resnetv1d_layers4_batchnorm6_running_mean",
+      "resnetv1d_layers4_batchnorm6_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        512
+      ]
+    }
+  },
+  {
+    "node_id": 515,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      513
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 516,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      515,
+      "resnetv1d_layers4_conv7_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "kernel_size": [
+        3,
+        3
+      ],
+      "W_shape": [
+        512,
+        512,
+        3,
+        3
+      ]
+    }
+  },
+  {
+    "node_id": 517,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      516,
+      "resnetv1d_layers4_batchnorm7_gamma",
+      "resnetv1d_layers4_batchnorm7_beta",
+      "resnetv1d_layers4_batchnorm7_running_mean",
+      "resnetv1d_layers4_batchnorm7_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        512
+      ]
+    }
+  },
+  {
+    "node_id": 519,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      517
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 520,
+    "node_type": "Call",
+    "op_type": "nn.conv2d",
+    "inputs": [
+      519,
+      "resnetv1d_layers4_conv8_weight"
+    ],
+    "attrs": {
+      "strides": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kernel_size": [
+        1,
+        1
+      ],
+      "W_shape": [
+        2048,
+        512,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "node_id": 521,
+    "node_type": "Call",
+    "op_type": "nn.batch_norm",
+    "inputs": [
+      520,
+      "resnetv1d_layers4_batchnorm8_gamma",
+      "resnetv1d_layers4_batchnorm8_beta",
+      "resnetv1d_layers4_batchnorm8_running_mean",
+      "resnetv1d_layers4_batchnorm8_running_var"
+    ],
+    "attrs": {
+      "epsilon": 1e-05,
+      "axis": 1,
+      "_shape": [
+        2048
+      ]
+    }
+  },
+  {
+    "node_id": 523,
+    "node_type": "Call",
+    "op_type": "add",
+    "inputs": [
+      521,
+      511
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 524,
+    "node_type": "Call",
+    "op_type": "nn.relu",
+    "inputs": [
+      523
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 525,
+    "node_type": "Call",
+    "op_type": "nn.global_avg_pool2d",
+    "inputs": [
+      524
+    ],
+    "attrs": {}
+  },
+  {
+    "node_id": 526,
+    "node_type": "Call",
+    "op_type": "nn.batch_flatten",
+    "inputs": [
+      525
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 527,
+    "node_type": "Call",
+    "op_type": "nn.batch_flatten",
+    "inputs": [
+      526
+    ],
+    "attrs": null
+  },
+  {
+    "node_id": 528,
+    "node_type": "Call",
+    "op_type": "nn.dense",
+    "inputs": [
+      527,
+      "resnetv1d_dense0_weight"
+    ],
+    "attrs": {
+      "units": 1000,
+      "_shape": [
+        1000,
+        2048
+      ]
+    }
+  },
+  {
+    "node_id": 529,
+    "node_type": "Call",
+    "op_type": "nn.bias_add",
+    "inputs": [
+      528,
+      "resnetv1d_dense0_bias"
+    ],
+    "attrs": {
+      "_shape": [
+        1000
+      ]
+    }
+  }
+]

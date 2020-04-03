@@ -3,7 +3,7 @@ import sys
 import numpy
 import torch
 import torchvision
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 from optimizers import pytorch_pruning as pruning
 
 class Net(torch.nn.Module):
@@ -34,14 +34,14 @@ class Net(torch.nn.Module):
 
 if __name__ == '__main__':
     # setup gpu device(s) 
-    os.environ['CUDA_VISIBLE_DEVICES'] = '3'
+    os.environ['CUDA_VISIBLE_DEVICES'] = '0'
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     
     #setup training parameters
     batch_size = 1000
-    pretrain_epoch = 20 
-    epoch = 50
-    pruning_epoch = 40 
+    pretrain_epoch = 40 
+    epoch = 120
+    pruning_epoch = 80 
     assert pretrain_epoch <= epoch, 'reset pruning epoch to be smaller than total epoch!!'
     lr = 0.1 / 256 * batch_size
     print('*** initial training parameters ***')
@@ -117,11 +117,11 @@ if __name__ == '__main__':
         if temp_rate == 1.0 and test_acc > best_acc_dense:
             best_acc_dense = test_acc
         print('epoch {}|accuracy: {:.4f}|pruning_rate={:.4f}'.format(idx, test_acc, 1.0-temp_rate))
-    torch.save(model.state_dict(), 'pytorch_mnist')
+    torch.save(model.state_dict(), 'pytorch_mnist.pth')
 
     print('*** summary ***')
     print('pruning rate = (MACs of sparse processing)/(MACs of dense processing)')
     print('MACs = number of multiply-accumulate')
     print('best accuracy of dense model: {:.4f}'.format(best_acc_dense))
     print('final accuracy: {:.4f}, final pruning rate: {:.4f}'.format(test_acc, 1-temp_rate))
-    print("*** model saved as pytorch_mnist ***")
+    print("*** model saved as pytorch_mnist.pth ***")

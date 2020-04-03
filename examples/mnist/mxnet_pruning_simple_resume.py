@@ -3,7 +3,7 @@ import sys
 import numpy
 import mxnet
 import gluoncv
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 from optimizers import mxnet_pruning as pruning
 
 class Net(mxnet.gluon.HybridBlock):
@@ -33,7 +33,7 @@ class Net(mxnet.gluon.HybridBlock):
 
 if __name__ == '__main__':
     # setup gpu device(s) 
-    os.environ['CUDA_VISIBLE_DEVICES'] = '3'
+    os.environ['CUDA_VISIBLE_DEVICES'] = '1'
     num_gpus = 1
     ctx = [mxnet.gpu(i) for i in range(num_gpus)] if num_gpus else [mxnet.cpu()]
 

@@ -3,7 +3,7 @@ import sys
 import numpy
 import mxnet
 import gluoncv
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 from optimizers import mxnet_pruning as pruning
 
 class Net(mxnet.gluon.HybridBlock):
@@ -33,14 +33,14 @@ class Net(mxnet.gluon.HybridBlock):
 
 if __name__ == '__main__':
     # setup gpu device(s) 
-    os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+    os.environ['CUDA_VISIBLE_DEVICES'] = '1'
     num_gpus = 1
     ctx = [mxnet.gpu(i) for i in range(num_gpus)] if num_gpus else [mxnet.cpu()]
 
     #setup training parameters
     batch_size = 1000
-    pretrain_epoch = 20 
-    epoch = 50
+    pretrain_epoch = 40 
+    epoch = 120
     lr = 0.1 / 256 * batch_size
     print('*** initial training parameters ***')
     print('batch size: {};\ntraining epochs without pruning: {};\ntotal training epochs: {};\ninitial learning rate: {:.3f} with cosine decay;'.format(batch_size, pretrain_epoch, epoch, lr))
@@ -65,7 +65,7 @@ if __name__ == '__main__':
     # pruning setup 
     target_sparsity = 0.8
     pretrain_step = step * pretrain_epoch
-    pruning_epoch = 25 
+    pruning_epoch = 80 
     assert pretrain_epoch <= epoch, 'reset pruning epoch to be smaller than total epoch!!'
     sparse_step = pruning_epoch * step
     frequency = step / 5
