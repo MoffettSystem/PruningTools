@@ -1,60 +1,43 @@
-## tensorflow v1 框架优化器文档：
+## tensorflow v1 sparse optimizer：
 
-稀疏优化器有两种参数。第一种参数是原框架优化器的参数，比如lr、momentum等。由于一些原因，tensorflow v1 的稀疏优化器暂时还无法做到行为等同于原框架的优化器。
+### One sparse optimizers are released
 
-另一种参数是稀疏化参数，比如target_sparsity等，这种参数设置稀疏优化算法的行为。稀疏优化器的参数不会影响原框架优化器的参数。相同框架的目稀疏优化器都有相同的稀疏化参数，且功能相同。
+* MomentumOptimizerSparse (pruning functions added into official SGD optimizer)
 
-## 目前提供以下优化器：
+Besides the common parameters used in optimizers, such as learning rate, momentum, the sparse optimizers have a few pruning-related parameters, as listed below:
 
-* MomentumOptimizerSparse
-
-    该优化器有以下特有参数：
-
-    * learning_rate:
-
-            设置学习率。
-
-    * momentum (default=0.9):
-
-            设置momentum。
-
-    * use_locking (default=False):
-
-            是否使用变量锁。
-
-## 稀疏优化器的参数：
 * init_sparsity=0 (float, default=0):
 
-        设置初始稀疏率。
+      initial sparsity
 
 * target_sparsity (float, default=0):
 
-        设置最终稀疏率。
+      final sparsity, e.g. 0.95 
 
 * pretrain_step (int, default=0):
 
-        执行稀疏训练之前先执行多少步预训练。如果是从随机初始化训练模型，那么pretrain_step可以设置为适合的步数。如果是从已经训练好的模型直接压缩，那么pretrain_step可以设置为0。
+      pretrained steps before pruning. This value should be set to 0 if a pretrained model is loaded
 
 * sparse_step (int, default=0):
 
-        执行稀疏训练多少步。在这个期间内，每frequency次就执行一次压缩。
+      pruning within the sparse step 
 
 * frequency (int, default=100):
 
-        执行稀疏化算法的频率。frequency不建议设置的太小或太大，我们的实验设置为几百是比较合适的。
+      in how many steps, pruning a interval toward the target sparsity
 
 * keywords_no_sparse (list, default=['bias', 'beta', 'gamma']):
 
-        设置网络参数中包含哪些关键字的变量不执行稀疏化，默认为batch norm层不稀疏，所有的bias不稀疏。
+      parameters to be excluded during pruning
 
 * special_sparsity_dict (dict, default={}):
 
-        指定稀疏率不同于target_sparsity，需要设定特别稀疏率的变量。例如special_sparsity_dict={'conv2d/kernel:0':0.2}。
+      name-sparsity pairs with target sparsity different from the default one, such as special_sparsity_dict={'layer1.weight':0.2}
 
 * enable_channel_balance (bool, default=True):
 
-        设置分组压缩的分组策略，该选项与硬件相关，目前仅支持默认参数。另外由于硬件限制，目前要求卷积层的输入和输出通道都必须可被4整除，否则该层不支持被压缩。
+      bank balanced setup based on hardware resources
 
 * finetune (bool, default=False):
 
-        设置是否从已经稀疏化的模型继续训练。在finetune时设置为True，此时会固定稀疏率不再变化。
+      restore the sparsity in the pretrained model and finetune the sparse network on new datasets

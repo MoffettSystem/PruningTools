@@ -4,7 +4,7 @@ network: simple cnn
 
 dataset: mnist
 
-|模型|框架|训练数据集|稀疏率|准确率|
+|model|framework|training dataset|sparsity|top1|
 |-|-|-|-|-|
 |simple cnn|pytorch|mnist|0|99.0%|
 |simple cnn|pytorch|mnist|95%|99.0%|
@@ -18,7 +18,7 @@ network: sparse resnet50v1d trained and pruned on imagenet
 
 dataset: cifar10 
 
-|模型|框架|训练数据集|稀疏率|准确率|
+|model|framework|training dataset|sparsity|top1|
 |-|-|-|-|-|
 |resnet50v1d|pytorch|cifar10|0|93.6%|
 |resnet50v1d_224input|pytorch|cifar10|95%|94.8%|
@@ -31,7 +31,7 @@ network: Moffett IR, sparse resnet50v1d trained and pruned on person-vehicle det
 
 dataset: A person-vehicle detection dataset derived from coco.
 
-|模型|框架|训练数据集|稀疏率|map|
+|model|framework|training dataset|sparsity|MAP|
 |-|-|-|-|-|
 |resnet50v1d + centernet|pytorch|person-vehicle detection|0|28.7%|
 |resnet50v1d + centernet|pytorch|person-vehicle detection|80%|30.4%|
